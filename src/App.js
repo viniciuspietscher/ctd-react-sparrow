@@ -10,7 +10,6 @@ const App = () => {
       <hr />
       <AddTodoForm />
       <TodoList />
-      
     </div>
   );
 }

@@ -1,5 +1,5 @@
-const AddTodoForm = () => {
-  return (
+const AddTodoForm = () => (
+  
     <>
       <form id="todoTitle">
         <label htmlFor="todoTitle">Title</label>
@@ -7,6 +7,5 @@ const AddTodoForm = () => {
       <button>Add</button>
     </>
   )
-}
 
 export default AddTodoForm
