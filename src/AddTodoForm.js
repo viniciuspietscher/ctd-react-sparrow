@@ -1,11 +1,9 @@
 const AddTodoForm = () => (
-  
-    <>
-      <form id="todoTitle">
-        <label htmlFor="todoTitle">Title</label>
-      </form>
-      <button>Add</button>
-    </>
-  )
+  <form>
+    <label htmlFor='todoTitle'>Title</label>
+    <input type='text' id='todoTitle' />
+    <button type='submit'>Add</button>
+  </form>
+)
 
 export default AddTodoForm
