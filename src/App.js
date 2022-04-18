@@ -1,9 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import TodoList from "./TodoList"
 import AddTodoForm from "./AddTodoForm"
 
 function App() {
   const [todoList, setTodoList] = useState([])
+
+  useEffect(() => {
+    localStorage.setItem("savedTodoList", todoList)
+  }, [todoList])
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo])
