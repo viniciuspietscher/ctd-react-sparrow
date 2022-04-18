@@ -5,6 +5,8 @@ import AddTodoForm from "./AddTodoForm"
 function useSemiPersistentState() {
   const [todoList, setTodoList] = useState(
     JSON.parse(localStorage.getItem("savedTodoList"))
+      ? JSON.parse(localStorage.getItem("savedTodoList"))
+      : []
   )
 
   useEffect(() => {
