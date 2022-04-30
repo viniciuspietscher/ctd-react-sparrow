@@ -1,12 +1,23 @@
-function InputWithLabel({ todoTitle, handleTitleChange, children }) {
+import { useRef, useEffect } from "react"
+
+function InputWithLabel({
+  todoTitle,
+  type = "text",
+  handleTitleChange,
+  children,
+}) {
+  const inputRef = useRef()
+  useEffect(() => {
+    inputRef.current.focus()
+  })
+
   return (
     <>
-      <label htmlFor='todoTitle'>{children}</label>
+      <label htmlFor={todoTitle}>{children}</label>
       <input
-        type='text'
-        id='todoTitle'
-        name='title'
-        autoFocus
+        ref={inputRef}
+        type={type}
+        id={todoTitle}
         value={todoTitle}
         onChange={handleTitleChange}
       />
