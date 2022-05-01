@@ -1,14 +1,18 @@
 import { useRef, useEffect } from "react"
 
 function InputWithLabel({
+  id,
   todoTitle,
   type = "text",
   handleTitleChange,
   children,
+  isFocused,
 }) {
   const inputRef = useRef()
   useEffect(() => {
-    inputRef.current.focus()
+    if (isFocused && inputRef.current) {
+      inputRef.current.focus()
+    }
   })
 
   return (
@@ -17,7 +21,7 @@ function InputWithLabel({
       <input
         ref={inputRef}
         type={type}
-        id={todoTitle}
+        id={id}
         value={todoTitle}
         onChange={handleTitleChange}
       />
