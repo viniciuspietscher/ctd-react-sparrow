@@ -4,6 +4,7 @@ import AddTodoForm from "./AddTodoForm"
 
 function App() {
   const [todoList, setTodoList] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const promise = new Promise((resolve, reject) => {
@@ -17,11 +18,14 @@ function App() {
     })
     promise.then((result) => {
       setTodoList(result.data.todoList)
+      setIsLoading(false)
     })
   }, [])
 
   useEffect(() => {
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList))
+    if (!isLoading) {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList))
+    }
   }, [todoList])
 
   function handleRemoveTodo(id) {
