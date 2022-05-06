@@ -45,7 +45,11 @@ function App() {
       </header>
       <hr />
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} onRemoveTodo={handleRemoveTodo} />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <TodoList todoList={todoList} onRemoveTodo={handleRemoveTodo} />
+      )}
     </>
   )
 }
