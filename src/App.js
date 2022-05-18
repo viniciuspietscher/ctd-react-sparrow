@@ -26,7 +26,7 @@ function App() {
     if (!isLoading) {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList))
     }
-  }, [todoList])
+  }, [todoList, isLoading])
 
   function handleRemoveTodo(id) {
     const newTodoList = todoList.filter((todoItem) => id !== todoItem.id)
