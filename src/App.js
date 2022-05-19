@@ -2,24 +2,27 @@ import { useState, useEffect } from "react"
 import TodoList from "./TodoList"
 import AddTodoForm from "./AddTodoForm"
 
+const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`
+const myInit = {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+  },
+}
+
 function App() {
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
-          },
-        })
-      }, 2000)
-    })
-    promise.then((result) => {
-      setTodoList(result.data.todoList)
-      setIsLoading(false)
-    })
+    fetch(url, myInit)
+      .then((result) => {
+        return result.json()
+      })
+      .then((result) => {
+        setTodoList(result.records)
+        setIsLoading(false)
+      })
   }, [])
 
   useEffect(() => {
