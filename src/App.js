@@ -16,9 +16,7 @@ function App() {
 
   useEffect(() => {
     fetch(url, myInit)
-      .then((result) => {
-        return result.json()
-      })
+      .then((result) => result.json())
       .then((result) => {
         setTodoList(result.records)
         setIsLoading(false)
