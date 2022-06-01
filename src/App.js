@@ -44,7 +44,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          exact
           path='/'
           element={
             <>
@@ -56,7 +55,6 @@ function App() {
           }
         />
         <Route
-          exact
           path='/new'
           element={
             <>
