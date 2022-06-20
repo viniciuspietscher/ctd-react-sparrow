@@ -1,0 +1,8 @@
+.ListContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.List {
+  text-align: right;
+}

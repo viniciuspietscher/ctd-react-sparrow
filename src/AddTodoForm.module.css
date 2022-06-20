@@ -1,0 +1,28 @@
+.AddTodo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 90px;
+}
+
+label {
+  margin-right: 5px;
+}
+
+input {
+  border-radius: 5px;
+}
+
+.ButtonAdd {
+  margin-left: 10px;
+  width: 35px;
+  background-color: rgba(0, 0, 0, 0);
+  text-align: center;
+  border: none;
+  filter: invert(18%) sepia(96%) saturate(2042%) hue-rotate(207deg) brightness(94%) contrast(91%);
+}
+
+.ButtonAdd :hover {
+  cursor: grab;
+}
