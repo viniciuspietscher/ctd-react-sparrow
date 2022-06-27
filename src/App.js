@@ -18,7 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   const addTodo = (newTodo) => {
-    if (newTodo.title) {
+    if (newTodo.title.trim()) {
       try {
         fetch(url, {
           method: "POST",
@@ -30,7 +30,7 @@ function App() {
             records: [
               {
                 fields: {
-                  Title: newTodo.title,
+                  Title: newTodo.title.trim(),
                 },
               },
             ],
@@ -50,6 +50,7 @@ function App() {
 
   const fetchData = () => {
     try {
+      setIsLoading(true)
       fetch(url, myInit)
         .then((result) => result.json())
         .then((result) => {
@@ -65,11 +66,11 @@ function App() {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList))
-    }
-  }, [todoList, isLoading])
+  // useEffect(() => {
+  //   if (!isLoading) {
+
+  //   }
+  // }, [todoList, isLoading])
 
   const handleRemoveTodo = (id) => {
     try {
