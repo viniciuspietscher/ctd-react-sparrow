@@ -25,9 +25,9 @@
 }
 
 .ButtonRemove :hover {
-  cursor: grab;
+  cursor: pointer;
 }
 
 .ButtonComplete :hover {
-  cursor: grab;
+  cursor: pointer;
 }

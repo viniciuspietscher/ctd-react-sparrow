@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import TodoList from "./TodoList"
-import AddTodoForm from "./AddTodoForm"
-import ListLogo from "./icons/clipboard-list-solid.svg"
+import TodoList from "./Components/TodoList"
+import AddTodoForm from "./Components/AddTodoForm"
+import { FaClipboardList } from "react-icons/fa"
 import style from "./App.module.css"
 
-const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`
+const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/`
 const myInit = {
   method: "GET",
   headers: {
@@ -17,17 +17,48 @@ function App() {
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo])
+  const addTodo = async (newTodo) => {
+    try {
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+        body: JSON.stringify({
+          records: [
+            {
+              fields: {
+                Title: newTodo.title,
+              },
+            },
+          ],
+        }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          setTodoList([...todoList, ...response.records])
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchData = async () => {
+    try {
+      await fetch(url, myInit)
+        .then((result) => result.json())
+        .then((result) => {
+          setTodoList(result.records)
+          setIsLoading(false)
+        })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
-    fetch(url, myInit)
-      .then((result) => result.json())
-      .then((result) => {
-        setTodoList(result.records)
-        setIsLoading(false)
-      })
+    fetchData()
   }, [])
 
   useEffect(() => {
@@ -37,9 +68,24 @@ function App() {
   }, [todoList, isLoading])
 
   function handleRemoveTodo(id) {
-    const newTodoList = todoList.filter((todoItem) => id !== todoItem.id)
+    try {
+      fetch(`${url}${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(function () {
+          const newTodoList = todoList.filter((todoItem) => id !== todoItem.id)
+          setTodoList(newTodoList)
+        })
+    } catch (error) {
+      console.log(error)
+    }
+    // const newTodoList = todoList.filter((todoItem) => id !== todoItem.id)
 
-    setTodoList(newTodoList)
+    // setTodoList(newTodoList)
   }
 
   return (
@@ -50,7 +96,7 @@ function App() {
           element={
             <>
               <header className={style.Header}>
-                <img className={style.AppLogo} src={ListLogo} alt='' />
+                <FaClipboardList size={36} />
                 <h1>To-Do List</h1>
               </header>
             </>
@@ -61,7 +107,7 @@ function App() {
           element={
             <>
               <header className={style.Header}>
-                <img className={style.AppLogo} src={ListLogo} alt='' />
+                <FaClipboardList size={36} />
                 <h1>New To-Do Item</h1>
               </header>
               <AddTodoForm onAddTodo={addTodo} />

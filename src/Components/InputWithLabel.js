@@ -23,6 +23,7 @@ function InputWithLabel({
         type={type}
         id={id}
         value={todoTitle}
+        autoComplete='off'
         onChange={handleTitleChange}
       />
     </>

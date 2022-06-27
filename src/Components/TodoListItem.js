@@ -1,6 +1,5 @@
 import style from "./TodoListItem.module.css"
-import buttonRemove from "./icons/circle-xmark-solid.svg"
-import buttonComplete from "./icons/circle-check-solid.svg"
+import { FaMinusCircle, FaCheckCircle } from "react-icons/fa"
 
 function TodoListItem({ todo, onRemoveTodo, onCompleteTodo }) {
   return (
@@ -10,13 +9,13 @@ function TodoListItem({ todo, onRemoveTodo, onCompleteTodo }) {
         className={style.ButtonRemove}
         onClick={() => onRemoveTodo(todo.id)}
       >
-        <img src={buttonRemove} />
+        <FaMinusCircle size={22} />
       </button>
       <button
         className={style.ButtonComplete}
         onClick={() => onCompleteTodo(todo.id)}
       >
-        <img src={buttonComplete} />
+        <FaCheckCircle size={22} />
       </button>
     </li>
   )

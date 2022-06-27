@@ -1,7 +1,7 @@
 import { useState } from "react"
 import InputWithLabel from "./InputWithLabel"
 import style from "./AddTodoForm.module.css"
-import addButton from "./icons/circle-plus-solid.svg"
+import { FaPlusCircle } from "react-icons/fa"
 
 function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = useState("")
@@ -29,7 +29,7 @@ function AddTodoForm({ onAddTodo }) {
         isFocused
       ></InputWithLabel>
       <button className={style.ButtonAdd} type='submit'>
-        <img src={addButton} />
+        <FaPlusCircle size={22} />
       </button>
     </form>
   )
