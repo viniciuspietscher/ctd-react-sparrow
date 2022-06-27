@@ -17,36 +17,40 @@ function App() {
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const addTodo = async (newTodo) => {
-    try {
-      await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        },
-        body: JSON.stringify({
-          records: [
-            {
-              fields: {
-                Title: newTodo.title,
+  const addTodo = (newTodo) => {
+    if (newTodo.title) {
+      try {
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          },
+          body: JSON.stringify({
+            records: [
+              {
+                fields: {
+                  Title: newTodo.title,
+                },
               },
-            },
-          ],
-        }),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          setTodoList([...todoList, ...response.records])
+            ],
+          }),
         })
-    } catch (error) {
-      console.log(error)
+          .then((response) => response.json())
+          .then((response) => {
+            setTodoList([...todoList, ...response.records])
+          })
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      console.log(`no item to add`)
     }
   }
 
-  const fetchData = async () => {
+  const fetchData = () => {
     try {
-      await fetch(url, myInit)
+      fetch(url, myInit)
         .then((result) => result.json())
         .then((result) => {
           setTodoList(result.records)
@@ -67,7 +71,7 @@ function App() {
     }
   }, [todoList, isLoading])
 
-  function handleRemoveTodo(id) {
+  const handleRemoveTodo = (id) => {
     try {
       fetch(`${url}${id}`, {
         method: "DELETE",
@@ -83,9 +87,6 @@ function App() {
     } catch (error) {
       console.log(error)
     }
-    // const newTodoList = todoList.filter((todoItem) => id !== todoItem.id)
-
-    // setTodoList(newTodoList)
   }
 
   return (
