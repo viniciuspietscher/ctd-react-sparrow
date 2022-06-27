@@ -1,5 +1,6 @@
 import TodoListItem from "./TodoListItem"
 import style from "./TodoList.module.css"
+import PropTypes from "prop-types"
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
@@ -11,6 +12,11 @@ function TodoList({ todoList, onRemoveTodo }) {
       </ul>
     </div>
   )
+}
+
+TodoList.propTypes = {
+  todoList: PropTypes.array.isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
 }
 
 export default TodoList
