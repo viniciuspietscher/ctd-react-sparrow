@@ -1,5 +1,6 @@
 import style from "./TodoListItem.module.css"
 import { FaMinusCircle, FaCheckCircle } from "react-icons/fa"
+import PropTypes from "prop-types"
 
 function TodoListItem({ todo, onRemoveTodo, onCompleteTodo }) {
   return (
@@ -19,6 +20,12 @@ function TodoListItem({ todo, onRemoveTodo, onCompleteTodo }) {
       </button>
     </li>
   )
+}
+
+TodoListItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
+  onCompleteTodo: PropTypes.func.isRequired,
 }
 
 export default TodoListItem
