@@ -3,8 +3,12 @@ import { FaMinusCircle, FaCheckCircle } from "react-icons/fa"
 import PropTypes from "prop-types"
 
 function TodoListItem({ todo, onRemoveTodo, onCompleteTodo }) {
+  let appliedStyle = style.ListItem
+  if (todo.fields.Completed === "yes") {
+    appliedStyle = style.ListItemDone
+  }
   return (
-    <li className={style.ListItem}>
+    <li className={appliedStyle}>
       {todo.fields.Title}
       <button
         className={style.ButtonRemove}

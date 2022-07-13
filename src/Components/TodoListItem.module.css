@@ -7,13 +7,24 @@
   align-items: center;
 }
 
+.ListItemDone {
+  color: rgba(138, 140, 177, 0.798);
+  list-style: none;
+  margin: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-decoration: line-through;
+}
+
 .ButtonRemove {
   margin-left: 20px;
   width: 30px;
   background-color: rgba(0, 0, 0, 0);
   text-align: center;
   border: none;
-  filter: invert(19%) sepia(43%) saturate(4453%) hue-rotate(352deg) brightness(86%) contrast(91%);
+  filter: invert(19%) sepia(43%) saturate(4453%) hue-rotate(352deg)
+    brightness(86%) contrast(91%);
 }
 
 .ButtonComplete {
@@ -21,7 +32,8 @@
   background-color: rgba(0, 0, 0, 0);
   text-align: center;
   border: none;
-  filter: invert(37%) sepia(95%) saturate(835%) hue-rotate(82deg) brightness(102%) contrast(97%);
+  filter: invert(37%) sepia(95%) saturate(835%) hue-rotate(82deg)
+    brightness(102%) contrast(97%);
 }
 
 .ButtonRemove :hover {

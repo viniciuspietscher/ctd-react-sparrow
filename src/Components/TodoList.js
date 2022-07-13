@@ -2,15 +2,23 @@ import TodoListItem from "./TodoListItem"
 import style from "./TodoList.module.css"
 import PropTypes from "prop-types"
 
-function TodoList({ todoList, onRemoveTodo }) {
+function TodoList({ todoList, onRemoveTodo, onCompleteTodo, sortList }) {
   return (
-    <div className={style.ListContainer}>
-      <ul className={style.List}>
-        {todoList.map((item) => (
-          <TodoListItem key={item.id} todo={item} onRemoveTodo={onRemoveTodo} />
-        ))}
-      </ul>
-    </div>
+    <>
+      <button onClick={sortList}>Sort</button>
+      <div className={style.ListContainer}>
+        <ul className={style.List}>
+          {todoList.map((item) => (
+            <TodoListItem
+              key={item.id}
+              todo={item}
+              onRemoveTodo={onRemoveTodo}
+              onCompleteTodo={onCompleteTodo}
+            />
+          ))}
+        </ul>
+      </div>
+    </>
   )
 }
 
