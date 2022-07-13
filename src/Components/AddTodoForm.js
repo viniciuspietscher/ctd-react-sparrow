@@ -1,10 +1,10 @@
 import { useState } from "react"
 import InputWithLabel from "./InputWithLabel"
 import style from "./AddTodoForm.module.css"
-import { FaPlusCircle } from "react-icons/fa"
+import { FaPlusCircle, FaSort } from "react-icons/fa"
 import PropTypes from "prop-types"
 
-function AddTodoForm({ onAddTodo }) {
+function AddTodoForm({ onAddTodo, sortList }) {
   const [todoTitle, setTodoTitle] = useState("")
 
   const handleTitleChange = (event) => {
@@ -21,17 +21,24 @@ function AddTodoForm({ onAddTodo }) {
   }
 
   return (
-    <form className={style.AddTodo} onSubmit={handleAddTodo}>
-      <InputWithLabel
-        id='todoTitle'
-        todoTitle={todoTitle}
-        handleTitleChange={handleTitleChange}
-        isFocused
-      ></InputWithLabel>
-      <button className={style.ButtonAdd} type='submit'>
-        <FaPlusCircle size={22} />
-      </button>
-    </form>
+    <>
+      <div className={style.AddTodo}>
+        <form onSubmit={handleAddTodo}>
+          <InputWithLabel
+            id='todoTitle'
+            todoTitle={todoTitle}
+            handleTitleChange={handleTitleChange}
+            isFocused
+          ></InputWithLabel>
+          <button className={style.ButtonAdd} type='submit'>
+            <FaPlusCircle size={22} />
+          </button>
+        </form>
+        <button className={style.ButtonSort} onClick={sortList}>
+          <FaSort size={22} />
+        </button>
+      </div>
+    </>
   )
 }
 

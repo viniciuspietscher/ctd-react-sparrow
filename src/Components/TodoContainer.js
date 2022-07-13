@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import style from "./TodoContainer.module.css"
 import TodoList from "./TodoList"
 import AddTodoForm from "./AddTodoForm"
 
@@ -120,10 +121,9 @@ function TodoContainer() {
         <p>Loading...</p>
       ) : (
         <>
-          <AddTodoForm onAddTodo={addTodo} />
+          <AddTodoForm onAddTodo={addTodo} sortList={sortData} />
           <TodoList
             todoList={todoList}
-            sortList={sortData}
             onRemoveTodo={handleRemoveTodo}
             onCompleteTodo={handleCompleteTodo}
           />

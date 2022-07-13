@@ -1,19 +1,35 @@
 .Header {
-  display: flex;
-  /* background-color: white; */
-  align-items: center;
-  justify-content: space-around;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+  background-color: #1e293b;
+  box-shadow: 0px 3px 8px rgba(211, 210, 210, 0.1);
   height: 60px;
+  font-size: 32px;
+}
+
+.Logo {
+  color: rgb(199, 199, 199);
+  margin-top: 10px;
+}
+
+a {
+  color: rgb(199, 199, 199);
+  text-decoration: underline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.HeaderUL {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
 }
 /* 
 .Header ul {
   display: flex;
 } */
-
-a {
-  font-family: "Roboto", sans-serif;
-}
 
 /* .AppLogo {
   width: 20px;

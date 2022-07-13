@@ -7,8 +7,6 @@ function TodoList({ todoList, onRemoveTodo, onCompleteTodo, sortList }) {
   return (
     <div className={style.ListContainer}>
       <ul className={style.List}>
-        Sort List
-        <FaSort onClick={sortList} />
         {todoList.map((item) => (
           <TodoListItem
             key={item.id}

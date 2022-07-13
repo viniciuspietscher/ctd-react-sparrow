@@ -20,9 +20,23 @@ input {
   background-color: rgba(0, 0, 0, 0);
   text-align: center;
   border: none;
-  filter: invert(18%) sepia(96%) saturate(2042%) hue-rotate(207deg) brightness(94%) contrast(91%);
+  filter: invert(18%) sepia(96%) saturate(2042%) hue-rotate(207deg)
+    brightness(94%) contrast(91%);
 }
 
 .ButtonAdd :hover {
-  cursor: grab;
+  cursor: pointer;
+}
+
+.ButtonSort {
+  background-color: rgba(0, 0, 0, 0.082);
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 30px;
+  filter: brightness(0) saturate(100%) invert(99%) sepia(44%) saturate(0%)
+    hue-rotate(182deg) brightness(105%) contrast(100%);
+}
+
+.ButtonSort :hover {
+  cursor: pointer;
 }
