@@ -1,24 +1,24 @@
 import TodoListItem from "./TodoListItem"
 import style from "./TodoList.module.css"
 import PropTypes from "prop-types"
+import { FaSort } from "react-icons/fa"
 
 function TodoList({ todoList, onRemoveTodo, onCompleteTodo, sortList }) {
   return (
-    <>
-      <button onClick={sortList}>Sort</button>
-      <div className={style.ListContainer}>
-        <ul className={style.List}>
-          {todoList.map((item) => (
-            <TodoListItem
-              key={item.id}
-              todo={item}
-              onRemoveTodo={onRemoveTodo}
-              onCompleteTodo={onCompleteTodo}
-            />
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className={style.ListContainer}>
+      <ul className={style.List}>
+        Sort List
+        <FaSort onClick={sortList} />
+        {todoList.map((item) => (
+          <TodoListItem
+            key={item.id}
+            todo={item}
+            onRemoveTodo={onRemoveTodo}
+            onCompleteTodo={onCompleteTodo}
+          />
+        ))}
+      </ul>
+    </div>
   )
 }
 

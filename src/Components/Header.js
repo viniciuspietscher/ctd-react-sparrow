@@ -1,11 +1,19 @@
+import { Link } from "react-router-dom"
 import { FaClipboardList } from "react-icons/fa"
 import style from "./Header.module.css"
 
 function Header() {
   return (
     <header className={style.Header}>
-      <FaClipboardList size={36} />
-      <h1>To-Do List</h1>
+      <ul>
+        <li>
+          <FaClipboardList size={36} />
+          <Link to={"/"}>My todo list app</Link>
+        </li>
+        <li>
+          <Link to={"/new"}>New Item</Link>
+        </li>
+      </ul>
     </header>
   )
 }
